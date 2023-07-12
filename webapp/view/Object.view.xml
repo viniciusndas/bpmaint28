@@ -102,7 +102,8 @@
                                         <core:Item text="{Land}" />
                                     </suggestionItems>
                                 </Input-->
-                                <Input id="txtCountry" value="{Country}" editable="{objectView>/edit}"/>
+                                <!--Input id="txtCountry" value="{Country}" editable="{objectView>/edit}"/-->
+                                <Input id="txtCountry" value="{Country}" description="{CountryDetails/Landx50}" editable="{objectView>/edit}" showValueHelp="true" valueHelpRequest="openCountryDialog"/>
                             </form:fields>
                         </form:FormElement>
                     </form:FormContainer>

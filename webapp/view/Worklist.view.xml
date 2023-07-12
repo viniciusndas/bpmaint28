@@ -24,7 +24,10 @@
                     sorter: {
                         path: 'PartnerId',
                         descending: false
-                    }
+                    },
+                    parameters: { 
+                        expand: 'CountryDetails' 
+                    } 
                 }"
                 noDataText="{worklistView>/tableNoDataText}"
                 busyIndicatorDelay="{worklistView>/tableBusyDelay}"
@@ -39,6 +42,7 @@
                             text="{worklistView>/worklistTableTitle}"
                             level="H3"/>
                         <ToolbarSpacer />
+                        <Button id="buttonCreate" icon="sap-icon://save" text="{i18n>btnCreate}​​" type="Default" press="onCreatePress" />
                         <SearchField
                             id="searchField"
                             tooltip="{i18n>worklistSearchTooltip}"
@@ -49,6 +53,7 @@
                                     priority="NeverOverflow"/>
                             </layoutData>
                         </SearchField>
+                        
                     </OverflowToolbar>
                 </headerToolbar>
 
@@ -85,7 +90,7 @@
                             <Text text="{path: 'PartnerType', 
 formatter: '.formatPartnerType'}"/>
                             <Text text="{Region}"/>
-                            <Text text="{Country}"/>
+                            <Text text="{Country}-{CountryDetails/Landx50}" />
                             <!--ObjectNumber /-->
                         </cells>
                     </ColumnListItem>

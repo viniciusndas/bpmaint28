@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
+specVersion: "2.6"
+metadata:
+  name: bpmaint28.bpmaint28
+type: application
+builder:
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**
+  customTasks:
+    - name: deploy-to-abap
+      afterTask: generateCachebusterInfo
+      configuration:
+        target:
+          destination: Trainning
+          url: http://201.6.255.151:9222
+        app:
+          name: ZBP_28
+          description: Versao Inicial
+          package: ZFIORI_002
+          transport: S4HK900078
+        exclude:
+          - /test/

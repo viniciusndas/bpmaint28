@@ -181,7 +181,31 @@ sap.ui.define([
                     let bEdit = oViewModel.getProperty("/edit");
         
                     oViewModel.setProperty("/edit", !bEdit);
-                }
+                },
+                openCountryDialog: function (oEvent) {
+                    if (!this._oCountryDialog) {
+                        this._oCountryDialog = sap.ui.xmlfragment("bpmaint28.bpmaint28.fragment.CountryDialog", this);
+                        this.getView().addDependent(this._oCountryDialog);
+                    }
+                    this._oCountryDialog.open();
+                },
+         
+                onSearchCountryDialog: function (oEvent) {
+                    var sValue = oEvent.getParameter("value");
+                    var oFilter = new Filter("LandName", FilterOperator.Contains, sValue);
+                    var oBinding = oEvent.getSource().getBinding("items");
+                    oBinding.filter([oFilter]);
+                },
+         
+                onCloseCountryDialog: function (oEvent) {
+                    var oSelectedItem = oEvent.getParameter("selectedItem"), oInput = this.byId("inputCountry");
+                    if (oSelectedItem) {
+                        oInput.setValue(oSelectedItem.getTitle());
+                        oInput.setDescription(oSelectedItem.getDescription());
+                    } else {
+                        oInput.resetProperty("value"); oInput.resetProperty("description");
+                    }
+                },
             });
         
         });
